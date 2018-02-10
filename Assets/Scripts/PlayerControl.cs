@@ -49,6 +49,39 @@ public class PlayerControl : MonoBehaviour {
 		//Действия по клику левой кнопкой мыши
 		if (Input.GetMouseButtonDown (0)) {
 
+
+
+			//Если руки не пустые и что-то видим, пытаемся применить предмет к объекту.
+			if (heldObject != "none" && hit.collider != null) {
+
+				if (hit.collider.tag == "object") {					
+					//someObject = GameObject.Find (hit.collider.name);
+					//Нужно передать объекту имя предмета в руках.
+					//someObject.GetComponent<Rigidbody> ().AddForceAtPosition (ray.direction * 1000f, hit.point);
+					Debug.Log ("Use two objects: " + heldObject + " + " + hit.collider.name);
+				}
+
+				if (hit.collider.name == "Terrain") {					
+					//Нужно передать объекту сообщение.
+					Debug.Log ("Try to use " + heldObject);
+				}
+
+			}
+
+			//Если руки пустые и что-то видим, поднимаем это.
+			if (heldObject == "none" && hit.collider != null) {
+
+				if (hit.collider.tag == "object") {
+					heldObject = hit.collider.name;
+					someObject = GameObject.Find (hit.collider.name);
+					someObject.GetComponent<boxScript> ().inHands = true;
+					//Нужно передать объекту флаг, что его несет игрок.
+					//someObject.GetComponent<Rigidbody> ().AddForceAtPosition (ray.direction * 1000f, hit.point);
+					Debug.Log ("Now i carry " + heldObject);
+				}
+
+			}
+
 			//Если что-то видим и оъект является кнопкой, нажимаем ее.
 			if (hit.collider != null) {
 				if (hit.collider.tag == "button") {
@@ -64,42 +97,28 @@ public class PlayerControl : MonoBehaviour {
 				Debug.Log ("Try to use " + heldObject);
 			}
 
-
-			//Если руки пустые и что-то видим, поднимаем это.
-			if (heldObject == "none" && hit.collider != null) {
-				
-				if (hit.collider.tag == "object") {
-					heldObject = hit.collider.name;
-					someObject = GameObject.Find (hit.collider.name);
-					someObject.GetComponent<boxScript> ().inHands = true;
-					//Нужно передать объекту флаг, что его несет игрок.
-					//someObject.GetComponent<Rigidbody> ().AddForceAtPosition (ray.direction * 1000f, hit.point);
-					Debug.Log ("Now i carry " + heldObject);
-				}
-					
-			}
-
-			//Если руки не пустые и что-то видим, пытаемся применить предмет к объекту.
-			if (heldObject != "none" && hit.collider != null) {
-				
-				if (hit.collider.tag == "object") {					
-					//someObject = GameObject.Find (hit.collider.name);
-					//Нужно передать объекту имя предмета в руках.
-					//someObject.GetComponent<Rigidbody> ().AddForceAtPosition (ray.direction * 1000f, hit.point);
-					Debug.Log ("Use two objects: " + heldObject + " + " + hit.collider.name);
-				}
-
-			}
-
-
-
-
-
-
 		}
+
+
+
 
 		//Действия по клику правой кнопкой мыши
 		if (Input.GetMouseButtonDown (1)) {
+
+
+			//Если руки пустые и что-то видим, пинаем это.
+			if (heldObject == "none" && hit.collider != null) {
+
+				if (hit.collider.name == "Terrain") {
+					Debug.Log ("Can't kick terrain");
+				}
+
+				if (hit.collider.tag == "object") {
+					someObject = GameObject.Find (hit.collider.name);
+					someObject.GetComponent<Rigidbody> ().AddForceAtPosition (ray.direction * 1000f, hit.point);
+					Debug.Log ("Kick that " + hit.collider.name);
+				}
+			}		
 
 			//Если руки не пустые бросаем предмет.
 			if (heldObject != "none") {				
@@ -110,19 +129,7 @@ public class PlayerControl : MonoBehaviour {
 				Debug.Log ("Now i carry " + heldObject);
 			}
 
-			//Если руки пустые и что-то видим, пинаем это.
-			if (heldObject == "none" && hit.collider != null) {
 				
-				if (hit.collider.name == "Terrain") {
-					Debug.Log ("Can't kick terrain");
-				}
-
-				if (hit.collider.tag == "object") {
-					someObject = GameObject.Find (hit.collider.name);
-					someObject.GetComponent<Rigidbody> ().AddForceAtPosition (ray.direction * 1000f, hit.point);
-					Debug.Log ("Kick that " + hit.collider.name);
-				}
-			}			
 
 		}	
 

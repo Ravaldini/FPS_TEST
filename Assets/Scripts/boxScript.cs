@@ -18,12 +18,16 @@ public class boxScript : MonoBehaviour {
 	void Update () {
 
 		if (inHands) {
+			//this.gameObject.layer = 8;
 			someObject = GameObject.Find ("FPSController");
-			transform.position = someObject.transform.position;
+			GetComponent<Transform> ().position = someObject.transform.position;
 			GetComponent<BoxCollider> ().enabled = false;
+			GetComponent<Rigidbody> ().isKinematic = true;
 		}
 		else {
+			//this.gameObject.layer = 0;
 			GetComponent<BoxCollider> ().enabled = true;
+			GetComponent<Rigidbody> ().isKinematic = false;
 		}
 
 	}

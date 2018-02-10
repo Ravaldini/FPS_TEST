@@ -4,8 +4,8 @@
     <Files>
       <File FileName="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerControl.cs" Line="93" Column="4" />
-      <File FileName="Assets\Scripts\boxScript.cs" Line="24" Column="4" />
+      <File FileName="Assets\Scripts\PlayerControl.cs" Line="102" Column="3" />
+      <File FileName="Assets\Scripts\boxScript.cs" Line="21" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
