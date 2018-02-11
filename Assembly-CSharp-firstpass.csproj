@@ -213,6 +213,12 @@
  <HintPath>C:/Users/User/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="com.unity.postprocessing.Editor.csproj">
+      <Project>{513DA499-B69C-11C7-E9CD-2F36C614551D}</Project>      <Name>com.unity.postprocessing.Editor</Name>    </ProjectReference>
+    <ProjectReference Include="com.unity.postprocessing.Runtime.csproj">
+      <Project>{218E7A1C-3DA3-D1B9-AB9B-A2A9F5868FFC}</Project>      <Name>com.unity.postprocessing.Runtime</Name>    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

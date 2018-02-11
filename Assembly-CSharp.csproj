@@ -53,7 +53,69 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\boxScript.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
-     <Compile Include="Assets\Scripts\Water_flip.cs" />
+     <Compile Include="Assets\Scripts\Water.cs" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\FinalPass.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Waveform.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Uber.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Texture3DLerp.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\CopyStd.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Bloom.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\xRLib.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\MultiScaleVOUpsample.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\PSSL.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\AutoExposure.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Vectorscope.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\GaussianDownsample.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\ScreenSpaceReflections.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\DepthOfField.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\DiscardAlpha.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Lut3DBaker.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Dithering.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Colors.hlsl" />
+     <None Include="Assets\Materials\Skybox\mp_awup\license.txt" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\Vulkan.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\GrainBaker.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\ExposureHistogram.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\LightMeter.shader" />
+     <None Include="Assets\Materials\Skybox\hw_crater\hw_crater.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\D3D12.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\OpenGL.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\DiskKernels.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\MultiScaleVODownsample2.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\ScalableAO.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\ACES.hlsl" />
+     <None Include="Assets\Materials\Skybox\hw_crater\license.txt" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\MultiScaleVODownsample1.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\StdLib.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\MultiScaleVO.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\DepthOfField.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\FastApproximateAntialiasing.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Fog.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\MultiScaleVORender.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\ScalableAO.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasing.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\MotionBlur.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\SubpixelMorphologicalAntialiasing.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Texture2DLerp.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\DeferredFog.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\D3D9.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Lut2DBaker.shader" />
+     <None Include="Assets\Materials\Skybox\sor_sea\readme.txt" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Overlays.shader" />
+     <None Include="Assets\Materials\Skybox\sor_sea\sor_sea.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\Metal.hlsl" />
+     <None Include="Assets\Materials\Skybox\mp_awup\mp_awup.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Vectorscope.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\TemporalAntialiasing.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\ScreenSpaceReflections.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\Copy.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\D3D11.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Waveform.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\API\XboxOne.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Sampling.hlsl" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Histogram.compute" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Histogram.shader" />
+     <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\ExposureHistogram.compute" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -145,6 +207,10 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{86792338-114C-7840-04AB-60FA1FBE9D03}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="com.unity.postprocessing.Editor.csproj">
+      <Project>{513DA499-B69C-11C7-E9CD-2F36C614551D}</Project>      <Name>com.unity.postprocessing.Editor</Name>    </ProjectReference>
+    <ProjectReference Include="com.unity.postprocessing.Runtime.csproj">
+      <Project>{218E7A1C-3DA3-D1B9-AB9B-A2A9F5868FFC}</Project>      <Name>com.unity.postprocessing.Runtime</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
