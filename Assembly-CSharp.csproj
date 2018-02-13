@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\boxScript.cs" />
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\sharkScript.cs" />
      <Compile Include="Assets\Scripts\Water.cs" />
      <None Include="Assets\Effects\PostProcessing\Shaders\Builtins\FinalPass.shader" />
      <None Include="Assets\Effects\PostProcessing\Shaders\Debug\Waveform.compute" />

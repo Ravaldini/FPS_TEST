@@ -16,7 +16,7 @@ public class Water : MonoBehaviour {
 		
 		if (player.transform.position.y <= 49.2) {
 			Debug.Log ("Under water now!");
-			System.
+			//System.
 		}
 
 		if (player.transform.position.y > 49.2) {
