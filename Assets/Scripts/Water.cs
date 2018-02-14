@@ -15,12 +15,12 @@ public class Water : MonoBehaviour {
 	void Update () {
 		
 		if (player.transform.position.y <= 49.2) {
-			Debug.Log ("Under water now!");
+			//Debug.Log ("Under water now!");
 			//System.
 		}
 
 		if (player.transform.position.y > 49.2) {
-			Debug.Log ("Back on air!");
+			//Debug.Log ("Back on air!");
 		}
 	}
 }
