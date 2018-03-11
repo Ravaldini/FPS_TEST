@@ -75,19 +75,20 @@ public class sharkScript : MonoBehaviour {
 
 				onMyWay = true;
 
+				wayDir = wayPoint - pos;
+				wayDir.Normalize();
 			}
 
-			wayDir = wayPoint - pos;
-			wayDir.Normalize();
+
 
 			float vAng = Vector3.Angle(dir, wayDir);
 			//Debug.Log ("vAng = " + vAng);
 
-			if (degRot > vAng)
-				degRot -= 5;
+			if (vAng > 180)
+				degRot -= 1;
 
-			if (degRot < vAng)
-				degRot += 5;
+			if (vAng < 180)
+				degRot += 1;
 
 			if (degRot > 360)
 				degRot -= 360;
