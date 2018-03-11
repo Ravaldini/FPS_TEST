@@ -7,6 +7,7 @@ public class sharkScript : MonoBehaviour {
 
 	Vector3 pos;
 	Quaternion rot;
+	int degRot = 0;
 	Vector3 dir;
 	float speed = 0.3f;
 
@@ -17,24 +18,34 @@ public class sharkScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		player = GameObject.Find ("FPSController");
 
 		pos = GetComponent<Transform> ().position;
-		//rot = GetComponent<Transform> ().rotation;
+
 		dir.Set(-0.7f, 0, -0.7f);
+
 		StartCoroutine (findDir ());
 
 	}
 	
 
-	void Update () {		
+	private void FixedUpdate () {		
 
+		//Движение
 		pos += dir * speed;
+
+		//Проверка высоты
 		if (pos.y > 49.3) pos.y = 49.3f;
 		if (pos.y < 1) pos.y = 1;
 
+		//Проверка прибытия в точку
+		if (pos.x > wayPoint.x - 0.5f && pos.x < wayPoint.x + 0.5f  && pos.y > wayPoint.y - 0.5f && pos.y < wayPoint.y + 0.5f && pos.z > wayPoint.z - 0.5f && pos.z < wayPoint.z + 0.5f)
+			onMyWay = false;
+		
 		GetComponent<Transform> ().position = pos;
 
+		//Создаем кватернион по вектору и устанавливаем на объект
 		rot.SetLookRotation (dir);
 		GetComponent<Transform> ().rotation = rot;
 
@@ -64,73 +75,44 @@ public class sharkScript : MonoBehaviour {
 
 				onMyWay = true;
 
-				wayDir = wayPoint - pos;
-				wayDir.Normalize();
-
-				Debug.Log ("wayDir = " + wayDir.ToString ());
-
 			}
 
 			wayDir = wayPoint - pos;
 			wayDir.Normalize();
 
-			bool settingX = false;
+			float vAng = Vector3.Angle(dir, wayDir);
+			//Debug.Log ("vAng = " + vAng);
 
-			if (dir.x > wayDir.x) {
-				dir.x -= 0.005f;
-				//dir.y += 0.001f;
-				//dir.z += 0.005f;
-				//dir.Normalize ();
+			if (degRot > vAng)
+				degRot -= 5;
 
-				settingX = true;
-			}
-			else settingX = false;
-				
-			if (dir.x < wayDir.x && !settingX) {
-				dir.x += 0.005f;
-				//dir.y -= 0.001f;
-				//dir.z -= 0.005f;
-				//dir.Normalize ();
+			if (degRot < vAng)
+				degRot += 5;
 
-				settingX = true;
-			}
-			else settingX = false;
+			if (degRot > 360)
+				degRot -= 360;
+
+			if (degRot < 0)
+				degRot += 360;
+			
+			//Debug.Log ("degRot = " + degRot);
+
+			float f = degRot * 0.0174532f;
+
+			dir.x = Mathf.Cos (f) - Mathf.Sin (f);
+			dir.z = Mathf.Sin (f) + Mathf.Cos (f);
+
 
 			if (dir.y > wayDir.y) {
-				//dir.x += 0.001f;
 				dir.y -= 0.005f;
-				//dir.z += 0.001f;
-				//dir.Normalize ();
 			}
 
-			if (dir.y < wayDir.y) {
-				//dir.x -= 0.001f;
+			if (dir.y < wayDir.y) {				
 				dir.y += 0.005f;
-				//dir.z -= 0.001f;
-				//dir.Normalize ();
 			}
 
-			if (dir.z > wayDir.z && !settingX) {
-				//dir.x += 0.005f;
-				//dir.y += 0.001f;
-				dir.z -= 0.005f;
-				//dir.Normalize ();
-			}
 
-			if (dir.z < wayDir.z && !settingX) {
-				//dir.x -= 0.005f;
-				//dir.y -= 0.001f;
-				dir.z += 0.005f;
-				//dir.Normalize ();
-			}		
-
-
-
-			if (pos.x > wayPoint.x - 0.5f && pos.x < wayPoint.x + 0.5f  && pos.y > wayPoint.y - 0.5f && pos.y < wayPoint.y + 0.5f && pos.z > wayPoint.z - 0.5f && pos.z < wayPoint.z + 0.5f)
-				onMyWay = false;
-
-
-			yield return new WaitForSeconds (0.05f);
+			yield return new WaitForSeconds (0.01f);
 		}
 	}
 }
