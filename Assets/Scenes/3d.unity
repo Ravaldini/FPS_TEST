@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
   m_Fog: 1
-  m_FogColor: {r: 0.41176474, g: 0.52156866, b: 0.5803922, a: 1}
+  m_FogColor: {r: 0.40000004, g: 0.5058824, b: 0.5529412, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.002
   m_LinearFogStart: 100
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4407614, g: 0.54369617, b: 0.6388118, a: 1}
+  m_IndirectSpecularColor: {r: 0.44076103, g: 0.5436958, b: 0.6388125, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -315,8 +315,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 523258656}
-  m_LocalRotation: {x: -0.1251337, y: 0.79352117, z: 0.17437907, w: 0.5694363}
-  m_LocalPosition: {x: 21.699821, y: 46.497734, z: 4.351857}
+  m_LocalRotation: {x: -0.045819085, y: 0.31577927, z: 0.015270625, w: 0.94760275}
+  m_LocalPosition: {x: 24.204739, y: 52.40139, z: 223.47351}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -435,7 +435,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4626828524042500, guid: 603651e9d94fb7e4c916a937a0b5d6ab, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 32.2
+      value: 54.14
       objectReference: {fileID: 0}
     - target: {fileID: 4626828524042500, guid: 603651e9d94fb7e4c916a937a0b5d6ab, type: 2}
       propertyPath: m_LocalPosition.y
@@ -443,7 +443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4626828524042500, guid: 603651e9d94fb7e4c916a937a0b5d6ab, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.62
+      value: 42.8
       objectReference: {fileID: 0}
     - target: {fileID: 4626828524042500, guid: 603651e9d94fb7e4c916a937a0b5d6ab, type: 2}
       propertyPath: m_LocalRotation.x

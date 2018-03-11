@@ -8,19 +8,28 @@ public class sharkScript : MonoBehaviour {
 	Vector3 pos;
 	Quaternion rot;
 	Vector3 dir;
+	float speed = 0.3f;
+
+	GameObject player;
+	bool onMyWay = false;
+	Vector3 wayPoint;
+	Vector3 wayDir;
 
 	// Use this for initialization
 	void Start () {
+		player = GameObject.Find ("FPSController");
+
 		pos = GetComponent<Transform> ().position;
 		//rot = GetComponent<Transform> ().rotation;
-		dir.Set(0,0,1);
+		dir.Set(-0.7f, 0, -0.7f);
 		StartCoroutine (findDir ());
+
 	}
 	
-	// Update is called once per frame
+
 	void Update () {		
 
-		pos += dir * 0.05f;
+		pos += dir * speed;
 		if (pos.y > 49.3) pos.y = 49.3f;
 		if (pos.y < 1) pos.y = 1;
 
@@ -35,57 +44,93 @@ public class sharkScript : MonoBehaviour {
 
 	IEnumerator findDir (){
 
+
+		//Выбираем точку в квадрате игрока.
+		//Начинаем движение.
+		//Поворот до нужного направления.
+		//Если коллизия, выполняем поворот влево или вправо, пока коллизия не исчезнет.
+		//Затем выбираем другую точку.
+		//Если достигли точки, выбираем другую точку.
 		while (true) {
+			
+			if (!onMyWay) {		
+			
+				float x = Random.Range (player.transform.position.x - 10, player.transform.position.x + 10);
+				float y = Random.Range (15, 49.3f);
+				float z = Random.Range (player.transform.position.z - 10, player.transform.position.z + 10);
+				;
+				wayPoint.Set (x, y, z);
+				Debug.Log ("wayPoint = " + wayPoint.ToString ());
 
-			int n = Random.Range (1, 7);
+				onMyWay = true;
 
-			if (n == 1) {
-				dir.x += 0.01f;
-				dir.y -= 0.005f;
-				dir.z -= 0.005f;
+				wayDir = wayPoint - pos;
+				wayDir.Normalize();
+
+				Debug.Log ("wayDir = " + wayDir.ToString ());
+
 			}
-			if (n == 2) {
-				dir.x -= 0.01f;
-				dir.y += 0.005f;
-				dir.z += 0.005f;
-			}
-			if (n == 3) {
+
+			wayDir = wayPoint - pos;
+			wayDir.Normalize();
+
+			bool settingX = false;
+
+			if (dir.x > wayDir.x) {
 				dir.x -= 0.005f;
-				dir.y += 0.01f;
-				dir.z -= 0.005f;
+				//dir.y += 0.001f;
+				//dir.z += 0.005f;
+				//dir.Normalize ();
+
+				settingX = true;
 			}
-			if (n == 4) {
+			else settingX = false;
+				
+			if (dir.x < wayDir.x && !settingX) {
 				dir.x += 0.005f;
-				dir.y -= 0.01f;
-				dir.z += 0.005f;
+				//dir.y -= 0.001f;
+				//dir.z -= 0.005f;
+				//dir.Normalize ();
+
+				settingX = true;
 			}
-			if (n == 5) {
-				dir.x -= 0.005f;
+			else settingX = false;
+
+			if (dir.y > wayDir.y) {
+				//dir.x += 0.001f;
 				dir.y -= 0.005f;
-				dir.z += 0.01f;
+				//dir.z += 0.001f;
+				//dir.Normalize ();
 			}
-			if (n == 6) {
-				dir.x += 0.005f;
+
+			if (dir.y < wayDir.y) {
+				//dir.x -= 0.001f;
 				dir.y += 0.005f;
-				dir.z -= 0.01f;
+				//dir.z -= 0.001f;
+				//dir.Normalize ();
 			}
 
-			if (dir.x > 1)
-				dir.x = 1;
-			if (dir.x < -1)
-				dir.x = -1;
-			if (dir.y > 0.3)
-				dir.y = 0.3f;
-			if (dir.y < -0.3)
-				dir.y = -0.3f;
-			if (dir.z > 1)
-				dir.z = 1;
-			if (dir.z < -1)
-				dir.z = -1;
+			if (dir.z > wayDir.z && !settingX) {
+				//dir.x += 0.005f;
+				//dir.y += 0.001f;
+				dir.z -= 0.005f;
+				//dir.Normalize ();
+			}
 
-			//Debug.Log ("dir = " + dir.ToString());
-			yield return new WaitForSeconds (0.1f);
-			print (Time.time);
+			if (dir.z < wayDir.z && !settingX) {
+				//dir.x -= 0.005f;
+				//dir.y -= 0.001f;
+				dir.z += 0.005f;
+				//dir.Normalize ();
+			}		
+
+
+
+			if (pos.x > wayPoint.x - 0.5f && pos.x < wayPoint.x + 0.5f  && pos.y > wayPoint.y - 0.5f && pos.y < wayPoint.y + 0.5f && pos.z > wayPoint.z - 0.5f && pos.z < wayPoint.z + 0.5f)
+				onMyWay = false;
+
+
+			yield return new WaitForSeconds (0.05f);
 		}
-		}
+	}
 }
