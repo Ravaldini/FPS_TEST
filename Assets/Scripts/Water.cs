@@ -16,11 +16,13 @@ public class Water : MonoBehaviour {
 		
 		if (player.transform.position.y <= 49.2) {
 			//Debug.Log ("Under water now!");
-			//System.
+			player.GetComponent<PlayerControl>().inWater = true;
+
 		}
 
 		if (player.transform.position.y > 49.2) {
 			//Debug.Log ("Back on air!");
+			player.GetComponent<PlayerControl>().inWater = false;
 		}
 	}
 }

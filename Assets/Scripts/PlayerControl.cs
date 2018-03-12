@@ -8,11 +8,13 @@ public class PlayerControl : MonoBehaviour {
 	GameObject someObject;
 	string heldObject;
 
+	public bool inWater;
+
 	// Use this for initialization
 	void Start () {
 
 		heldObject = "none";
-		
+		inWater = false;
 	}
 	
 	// Update is called once per frame

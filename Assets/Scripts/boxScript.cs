@@ -30,5 +30,6 @@ public class boxScript : MonoBehaviour {
 			GetComponent<Rigidbody> ().isKinematic = false;
 		}
 
+
 	}
 }
