@@ -5,6 +5,9 @@ using Random = UnityEngine.Random;
 
 public class sharkScript : MonoBehaviour {
 
+	public bool inWater;
+
+	Rigidbody m_RigidBody;
 	Vector3 pos;
 	Quaternion rot;
 	int degRot = 0;
@@ -24,7 +27,11 @@ public class sharkScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+		inWater = true;
+
+		m_RigidBody = GetComponent<Rigidbody>();
+
 		player = GameObject.Find ("FPSController");
 
 		pos = GetComponent<Transform> ().position;
@@ -33,28 +40,29 @@ public class sharkScript : MonoBehaviour {
 
 		StartCoroutine (findDir ());
 
+
 	}
 
 	void Update () {
 		//Проверка прибытия в точку
-		if (pos.x > wayPoint.x - 15 && pos.x < wayPoint.x + 15  && pos.y > wayPoint.y - 15 && pos.y < wayPoint.y + 15 && pos.z > wayPoint.z - 15 && pos.z < wayPoint.z + 15)
+		if (pos.x > wayPoint.x - 5 && pos.x < wayPoint.x + 5  && pos.y > wayPoint.y - 5 && pos.y < wayPoint.y + 5 && pos.z > wayPoint.z - 5 && pos.z < wayPoint.z + 5)
 			onMyWay = false;
 
-		GetComponent<Transform> ().position = pos;
+		//GetComponent<Transform> ().position = pos;
 
 		//Создаем кватернион по вектору и устанавливаем на объект
-		rot.SetLookRotation (dir);
-		GetComponent<Transform> ().rotation = rot;
+		//rot.SetLookRotation (dir);
+		//GetComponent<Transform> ().rotation = rot;
 
 		if (player.GetComponent<PlayerControl> ().inWater) {
 			onMyWay = false;
 			onHunt = true;
-			speed = 0.6f;
-			turnSpeed = 3;
+			speed = 10f;
+			turnSpeed = 1;
 		} 
 		else {
 			onHunt = false;
-			speed = 0.3f;
+			speed = 5f;
 			turnSpeed = 1;
 		}
 			
@@ -64,11 +72,19 @@ public class sharkScript : MonoBehaviour {
 	private void FixedUpdate () {		
 
 		//Движение
-		pos += dir * speed;
 
+		//m_RigidBody.AddForce (wayDir * speed, ForceMode.Impulse);
+		m_RigidBody.velocity = (dir * speed);
+
+
+
+		//if (inWater)
+			//m_RigidBody.AddForce(new Vector3(0, 2.2f, 0), ForceMode.Impulse);
+
+		//pos += dir * speed;
 		//Проверка высоты
-		if (pos.y > 49.3) pos.y = 49.3f;
-		if (pos.y < 1) pos.y = 1;
+		//if (pos.y > 49.3) pos.y = 49.3f;
+		//if (pos.y < 1) pos.y = 1;
 
 	}
 
@@ -87,12 +103,12 @@ public class sharkScript : MonoBehaviour {
 			
 				//Ищем рандомную точку прибытия
 				//Нужно переделать на генерацию с учетом суши
-				float x = Random.Range (player.transform.position.x - 150, player.transform.position.x + 150);
-				float y = Random.Range (15, 49.3f);
-				float z = Random.Range (player.transform.position.z - 150, player.transform.position.z + 150);
+				float x = Random.Range (player.transform.position.x - 100, player.transform.position.x + 100);
+				float y = Random.Range (15, 49.1f);
+				float z = Random.Range (player.transform.position.z - 100, player.transform.position.z + 100);
 				;
 				wayPoint.Set (x, y, z);
-				//Debug.Log ("wayPoint = " + wayPoint.ToString ());
+				Debug.Log ("wayPoint = " + wayPoint.ToString ());
 
 				onMyWay = true;
 			}
@@ -101,13 +117,14 @@ public class sharkScript : MonoBehaviour {
 
 				//Устанавливаем координаты игрока
 				wayPoint = player.GetComponent<Transform>().position;
-
+				//Debug.Log ("wayPoint = " + wayPoint.ToString ());
 			}
 
 			//Находим вектор к точке прибытия
 			wayDir = wayPoint - pos;
 			wayDir.Normalize();
 			//Debug.Log ("wayDir = " + wayDir);
+			//m_RigidBody.AddTorque (wayPoint * turnSpeed);
 
 
 			// Находим вектора смотрящие в стороны от направления движения акулы
@@ -139,6 +156,9 @@ public class sharkScript : MonoBehaviour {
 			
 			//Debug.Log ("degRot = " + degRot);
 
+
+
+
 			//Переводим в радианы
 			float f = degRot * 0.0174532f;
 
@@ -166,13 +186,14 @@ public class sharkScript : MonoBehaviour {
 
 		if (coll.gameObject.name == "Terrain") {			
 			
-			Debug.Log ("coll.contacts[0].point.x = " + coll.contacts[0].point.x);
-			Debug.Log ("coll.contacts[0].point.z = " + coll.contacts[0].point.z);
+			//Debug.Log ("coll.contacts[0].point.x = " + coll.contacts[0].point.x);
+			//Debug.Log ("coll.contacts[0].point.z = " + coll.contacts[0].point.z);
 
-			Vector3 nVec = coll.gameObject.GetComponent<Terrain> ().terrainData.GetInterpolatedNormal (coll.contacts[0].point.x, coll.contacts[0].point.z);
-			Debug.Log ("nVec = " + nVec.ToString ());
+			//Vector3 nVec = coll.gameObject.GetComponent<Terrain> ().terrainData.GetInterpolatedNormal (coll.contacts[0].point.x, coll.contacts[0].point.z);
+			//Debug.Log ("nVec = " + nVec.ToString ());
 		}
 
+		/*
 		//Разворот
 		dir = -dir;
 		degRot += 180;
@@ -182,7 +203,7 @@ public class sharkScript : MonoBehaviour {
 
 		if (degRot < 0)
 			degRot += 360;
-
+		*/
 		//Сброс точки прибытия
 		onMyWay = false;
 
