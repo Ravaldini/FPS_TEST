@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class sharkScript : MonoBehaviour {
 
+
 	public bool inWater;
 
 	Rigidbody m_RigidBody;
@@ -65,7 +66,7 @@ public class sharkScript : MonoBehaviour {
 			speed = 5f;
 			turnSpeed = 1;
 		}
-			
+
 
 	}
 
@@ -79,7 +80,7 @@ public class sharkScript : MonoBehaviour {
 
 
 		//if (inWater)
-			//m_RigidBody.AddForce(new Vector3(0, 2.2f, 0), ForceMode.Impulse);
+		//m_RigidBody.AddForce(new Vector3(0, 2.2f, 0), ForceMode.Impulse);
 
 		//pos += dir * speed;
 		//Проверка высоты
@@ -98,9 +99,9 @@ public class sharkScript : MonoBehaviour {
 		//Затем выбираем другую точку.
 		//Если достигли точки, выбираем другую точку.
 		while (true) {
-			
+
 			if (!onMyWay && !onHunt) {		
-			
+
 				//Ищем рандомную точку прибытия
 				//Нужно переделать на генерацию с учетом суши
 				float x = Random.Range (player.transform.position.x - 100, player.transform.position.x + 100);
@@ -153,7 +154,7 @@ public class sharkScript : MonoBehaviour {
 
 			if (degRot < 0)
 				degRot += 360;
-			
+
 			//Debug.Log ("degRot = " + degRot);
 
 
@@ -185,7 +186,7 @@ public class sharkScript : MonoBehaviour {
 	void OnCollisionEnter(Collision coll) {		
 
 		if (coll.gameObject.name == "Terrain") {			
-			
+
 			//Debug.Log ("coll.contacts[0].point.x = " + coll.contacts[0].point.x);
 			//Debug.Log ("coll.contacts[0].point.z = " + coll.contacts[0].point.z);
 
@@ -208,7 +209,5 @@ public class sharkScript : MonoBehaviour {
 		onMyWay = false;
 
 	}
-
-
 
 }

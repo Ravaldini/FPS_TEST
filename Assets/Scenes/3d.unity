@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
   m_Fog: 1
-  m_FogColor: {r: 0.40000004, g: 0.5058824, b: 0.5529412, a: 1}
+  m_FogColor: {r: 0.32455668, g: 0.462889, b: 0.50735295, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.002
   m_LinearFogStart: 100
@@ -147,8 +147,20 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &132444495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 132444493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f5641b8bf2b524aaf3701d13d020a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inWater: 0
 --- !u!1001 &137377112
 Prefab:
   m_ObjectHideFlags: 0
@@ -336,8 +348,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 523258656}
-  m_LocalRotation: {x: -0.1891424, y: 0.56410265, z: 0.13465299, w: 0.79239005}
-  m_LocalPosition: {x: -7.077692, y: 24.310425, z: 20.147064}
+  m_LocalRotation: {x: -0.15487741, y: 0.61297494, z: 0.12414015, w: 0.764764}
+  m_LocalPosition: {x: -12.797192, y: 23.453957, z: 4.591215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -503,7 +515,8 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114842342784420832, guid: 603651e9d94fb7e4c916a937a0b5d6ab, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 603651e9d94fb7e4c916a937a0b5d6ab, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1272667478

@@ -29,7 +29,7 @@ public class Water : MonoBehaviour {
 
 		if (shark.transform.position.y <= waterLevel) {
 			//Debug.Log ("Under water now!");
-			shark.GetComponent<sharkScript>().inWater = true;
+			shark.GetComponent<sharkScript_Kinematic>().inWater = true;
 
 		}
 
@@ -40,7 +40,7 @@ public class Water : MonoBehaviour {
 
 		if (shark.transform.position.y > waterLevel) {
 			//Debug.Log ("Back on air!");
-			shark.GetComponent<sharkScript>().inWater = false;
+			shark.GetComponent<sharkScript_Kinematic>().inWater = false;
 		}
 	}
 }
