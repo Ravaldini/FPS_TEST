@@ -45,20 +45,49 @@ public class sharkScript_Kinematic : MonoBehaviour {
 		if (pos.x > wayPoint.x - 5 && pos.x < wayPoint.x + 5  && pos.y > wayPoint.y - 5 && pos.y < wayPoint.y + 5 && pos.z > wayPoint.z - 5 && pos.z < wayPoint.z + 5)
 			onMyWay = false;
 
+        //Присваиваем новые координаты
 		GetComponent<Transform> ().position = pos;
 
 		//Создаем кватернион по вектору и устанавливаем на объект
 		rot.SetLookRotation (dir);
 		GetComponent<Transform> ().rotation = rot;
 
+
+
+        //Если игрок под водой проверяем видимость и начинаем охоту
 		if (player.GetComponent<PlayerControl> ().inWater) {
-			onMyWay = false;
-			onHunt = true;
-			speed = 0.3f;
-			turnSpeed = 1;
-		} 
+
+            //Проверка видимости
+
+            //Вектор между акулой и игроком
+            Vector3 vDistance = player.transform.position - pos;
+
+            //Столкновение луча между акулой и игроком с другими объектами
+            //Debug.DrawRay(pos, vDistance, Color.red, 0.3f);          
+
+            RaycastHit hit;
+            Physics.Raycast(pos, vDistance, out hit, vDistance.magnitude);
+
+            if(hit.collider.name != "Terrain")
+            {
+                //Debug.Log("Охота!!!");
+                onMyWay = false;
+                onHunt = true;
+                speed = 0.3f;
+                turnSpeed = 1;
+            }
+            else
+            {
+                //Debug.Log("не вижу");
+                onHunt = false;
+                speed = 0.1f;
+                turnSpeed = 1;
+            }
+
+        } 
 		else {
-			onHunt = false;
+            //Debug.Log("не вижу");
+            onHunt = false;
 			speed = 0.1f;
 			turnSpeed = 1;
 		}
@@ -91,9 +120,9 @@ public class sharkScript_Kinematic : MonoBehaviour {
 
 				//Ищем рандомную точку прибытия
 				//Нужно переделать на генерацию с учетом суши
-				float x = Random.Range (player.transform.position.x - 100, player.transform.position.x + 100);
-				float y = Random.Range (15, 49.1f);
-				float z = Random.Range (player.transform.position.z - 100, player.transform.position.z + 100);
+				float x = Random.Range (45.0f, 80.0f);
+				float y = Random.Range (15.0f,  49.1f);
+				float z = Random.Range (-80.0f, 150.0f);
 				;
 				wayPoint.Set (x, y, z);
 				Debug.Log ("wayPoint = " + wayPoint.ToString ());
@@ -163,8 +192,8 @@ public class sharkScript_Kinematic : MonoBehaviour {
 				dir.y += 0.01f;
 			}
 
-
-			yield return new WaitForSeconds (0.01f);
+            
+            yield return new WaitForSeconds (0.01f);
 		}
 
 	}
@@ -182,7 +211,7 @@ public class sharkScript_Kinematic : MonoBehaviour {
 			//Debug.Log ("nVec = " + nVec.ToString ());
 		}
 
-
+        /*
 		//Разворот
 		dir = -dir;
 		degRot += 180;
@@ -194,7 +223,7 @@ public class sharkScript_Kinematic : MonoBehaviour {
 			degRot += 360;
 		
 		//Сброс точки прибытия
-		onMyWay = false;
+		onMyWay = false;*/
 
 	}
 

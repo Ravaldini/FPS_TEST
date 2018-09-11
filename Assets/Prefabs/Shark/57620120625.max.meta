@@ -1,10 +1,23 @@
 fileFormatVersion: 2
 guid: 206b1c26d38c484418add3a719bf6ad2
-timeCreated: 1518552204
-licenseType: Free
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName: {}
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: WSHBODYF
+    100004: WSTOF
+    400000: //RootNode
+    400002: WSHBODYF
+    400004: WSTOF
+    2100000: WSHTOOTH
+    2100002: WSHSKIN
+    2300000: WSHBODYF
+    2300002: WSTOF
+    3300000: WSHBODYF
+    3300002: WSTOF
+    4300000: WSTOF
+    4300002: WSHBODYF
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -24,6 +37,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -55,6 +69,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
