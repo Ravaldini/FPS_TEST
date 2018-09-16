@@ -11,7 +11,7 @@ public class boxScript : MonoBehaviour {
     public bool inWater;
 
     Rigidbody rb;
-    float waterlevel = 49.2f;
+    float waterlevel = 49.5f;
 
     // Use this for initialization
     void Start () {
@@ -29,23 +29,17 @@ public class boxScript : MonoBehaviour {
         {
             //Debug.Log ("Under water now!");
             inWater = true;
-            rb.AddForce(0.35f * (waterlevel - transform.position.y) * Vector3.up, ForceMode.Impulse);
-
-            float x = rb.velocity.x;
-            if (x > 0) x -= 0.5f;
-            if (x < 0) x += 0.5f;
-
-            float y = rb.velocity.y;
-
-            float z = rb.velocity.z;
-            if (z > 0) z -= 0.5f;
-            if (z < 0) z += 0.5f;
-
-            rb.velocity.Set(x, y, z);
+            //rb.AddForce(0.05f * (waterlevel - transform.position.y) * Vector3.up, ForceMode.Impulse);
+            rb.AddForce(0.25f * Vector3.up, ForceMode.Impulse);
+            rb.drag = 0.5f;
+            rb.angularDrag = 2.0f;
+            
         }
         else
         {
             inWater = false;
+            rb.drag = 0.0f;
+            rb.angularDrag = 0.05f;
         }
 
         if (inHands) {

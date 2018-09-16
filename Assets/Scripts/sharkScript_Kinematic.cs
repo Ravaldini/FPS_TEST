@@ -55,14 +55,7 @@ public class sharkScript_Kinematic : MonoBehaviour {
 
         //Проверка прибытия в точку
         if (pos.x > wayPoint.x - 5 && pos.x < wayPoint.x + 5  && pos.y > wayPoint.y - 5 && pos.y < wayPoint.y + 5 && pos.z > wayPoint.z - 5 && pos.z < wayPoint.z + 5)
-			onMyWay = false;
-
-        //Присваиваем новые координаты
-		GetComponent<Transform> ().position = pos;
-
-		//Создаем кватернион по вектору и устанавливаем на объект
-		rot.SetLookRotation (dir);
-		GetComponent<Transform> ().rotation = rot;
+			onMyWay = false;       
 
 
 
@@ -115,7 +108,13 @@ public class sharkScript_Kinematic : MonoBehaviour {
 		if (pos.y > 49.3) pos.y = 49.3f;
 		if (pos.y < 1) pos.y = 1;
 
-	}
+        //Присваиваем новые координаты
+        GetComponent<Transform>().position = pos;
+
+        //Создаем кватернион по вектору и устанавливаем на объект
+        rot.SetLookRotation(dir);
+        GetComponent<Transform>().rotation = rot;
+    }
 
 	IEnumerator findDir (){
 
