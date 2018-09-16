@@ -20,7 +20,18 @@ public class PlayerControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		RaycastHit hit; //Объект проверяющий столкновения луча
+        //Проверка нахождения под водой
+        if (transform.position.y <= 49.2f)
+        {
+            //Debug.Log ("Under water now!");
+            inWater = true;
+
+        }
+        else {
+            inWater = false;
+        }
+
+        RaycastHit hit; //Объект проверяющий столкновения луча
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); //Луч из центра камеры
 
 		//Проверяем столкновения в пределах двух метров

@@ -41,8 +41,20 @@ public class sharkScript_Kinematic : MonoBehaviour {
 	}
 
 	void Update () {
-		//Проверка прибытия в точку
-		if (pos.x > wayPoint.x - 5 && pos.x < wayPoint.x + 5  && pos.y > wayPoint.y - 5 && pos.y < wayPoint.y + 5 && pos.z > wayPoint.z - 5 && pos.z < wayPoint.z + 5)
+        //Проверка нахождения под водой
+        if (transform.position.y <= 49.2f)
+        {
+            //Debug.Log ("Under water now!");
+            inWater = true;
+
+        }
+        else
+        {
+            inWater = false;
+        }
+
+        //Проверка прибытия в точку
+        if (pos.x > wayPoint.x - 5 && pos.x < wayPoint.x + 5  && pos.y > wayPoint.y - 5 && pos.y < wayPoint.y + 5 && pos.z > wayPoint.z - 5 && pos.z < wayPoint.z + 5)
 			onMyWay = false;
 
         //Присваиваем новые координаты

@@ -21,26 +21,6 @@ public class Water : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (player.transform.position.y <= waterLevel) {
-			//Debug.Log ("Under water now!");
-			player.GetComponent<PlayerControl>().inWater = true;
-
-		}
-
-		if (shark.transform.position.y <= waterLevel) {
-			//Debug.Log ("Under water now!");
-			shark.GetComponent<sharkScript_Kinematic>().inWater = true;
-
-		}
-
-		if (player.transform.position.y > waterLevel) {
-			//Debug.Log ("Back on air!");
-			player.GetComponent<PlayerControl>().inWater = false;
-		}
-
-		if (shark.transform.position.y > waterLevel) {
-			//Debug.Log ("Back on air!");
-			shark.GetComponent<sharkScript_Kinematic>().inWater = false;
-		}
+		
 	}
 }
