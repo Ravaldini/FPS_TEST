@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour {
 
+    GameObject someObject;
 
-	GameObject someObject;
+    int health = 100;
+    
 	string heldObject;
-
 	public bool inWater;
 
 	// Use this for initialization
@@ -144,7 +145,31 @@ public class PlayerControl : MonoBehaviour {
 
 				
 
-		}	
+		}
 
-	}
+
+        if (health <= 0)
+        {
+
+            //если объект в руках нужно бросить объект
+            if (heldObject != "none")
+            {
+
+                someObject = GameObject.Find(heldObject);
+                someObject.GetComponent<boxScript>().inHands = false;
+                heldObject = "none";
+                Debug.Log("Now i carry " + heldObject);
+            }
+
+            //удалить из списка целей акулы
+            
+            //вызвать партикл
+            
+            //вернуть здоровье
+            health = 100;
+            
+            //возродиться в точке старта
+
+        }
+    }
 }

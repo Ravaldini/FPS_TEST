@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class sharkScript_Kinematic : MonoBehaviour {
 
+    int health = 100;
 
-	public bool inWater;
+    public bool inWater;
 
 	Vector3 pos;
 	Quaternion rot;
@@ -98,7 +99,17 @@ public class sharkScript_Kinematic : MonoBehaviour {
 		}
 
 
-	}
+        if (health <= 0)
+        {
+
+            //сбросить флаг охоты
+            //сбросить пункт назначения            
+            //вызвать партикл
+            //возродиться в точке старта
+
+        }
+
+    }
 
 	private void FixedUpdate () {		
 

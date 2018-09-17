@@ -5,9 +5,11 @@ using UnityEngine;
 public class boxScript : MonoBehaviour {
 
 	GameObject someObject;
-	public bool inHands;
-	public string attachedTo;
 
+    int health = 100;
+
+    public bool inHands;
+	public string attachedTo;
     public bool inWater;
 
     Rigidbody rb;
@@ -55,6 +57,22 @@ public class boxScript : MonoBehaviour {
 			GetComponent<Rigidbody> ().isKinematic = false;
 		}
 
+        if (health <= 0) {
 
-	}
+            //если объект в руках нужно освободить руки
+            //удалить из списка целей акулы
+            //если объект в сборке - удалить соединения
+            //вызвать партикл
+            //уничтожить этот объект
+            //this.gameObject.
+            
+            // или вернуть здоровье?
+            //health = 100;
+
+            //перенести объект в точку старта?
+
+        }
+
+
+    }
 }
